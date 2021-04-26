@@ -18,6 +18,13 @@ class ViewController: UIViewController {
         return main
     }()
     
+    let redContainer: UIView = {
+        let rect = CGRect.zero
+        let view = UIView(frame: rect)
+        view.translatesAutoresizingMaskIntoConstraints  = false
+        view.backgroundColor = .red
+        return view
+    }()
     
     let purpleBox: UIView = {
         let rect = CGRect.zero
@@ -61,12 +68,23 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         mainView.addSubview(purpleBox)
+        mainView.addSubview(redContainer)
         
         NSLayoutConstraint.activate([
+            // puple
             purpleBox.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -20),
             purpleBox.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -20),
             purpleBox.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.6),
-            purpleBox.heightAnchor.constraint(equalToConstant: 40)
+            purpleBox.heightAnchor.constraint(equalToConstant: 40),
+            
+            // red
+            redContainer.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 20),
+            redContainer.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -20),
+            redContainer.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.3),
+            redContainer.heightAnchor.constraint(equalToConstant: 50),
+            
+            // blue
+            
         ])
         
         view.addSubview(mainView)
