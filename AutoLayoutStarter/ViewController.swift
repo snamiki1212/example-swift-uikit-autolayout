@@ -17,6 +17,15 @@ class ViewController: UIViewController {
     main.backgroundColor = .green
     return main
   }()
+    
+    
+    let purpleBox: UIView = {
+        let rect = CGRect.zero
+        let view = UIView(frame: rect)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .purple
+        return view
+    }()
   
   let squareButton: UIButton = {
     let butt = UIButton(type: .system)
@@ -47,10 +56,19 @@ class ViewController: UIViewController {
   
   var widthAnchor: NSLayoutConstraint?
   var heightAnchor: NSLayoutConstraint?
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
+    mainView.addSubview(purpleBox)
+    
+    NSLayoutConstraint.activate([
+        purpleBox.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -20),
+        purpleBox.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -20),
+        purpleBox.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.6),
+        purpleBox.heightAnchor.constraint(equalToConstant: 40)
+    ])
+    
     view.addSubview(mainView)
     setupLayout()
   }
