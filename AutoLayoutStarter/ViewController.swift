@@ -26,6 +26,31 @@ class ViewController: UIViewController {
         return view
     }()
     
+    let blueBoxSize = CGFloat(40)
+    let blueBox1: UIView = {
+        let rect = CGRect.zero
+        let box = UIView(frame: rect)
+        box.translatesAutoresizingMaskIntoConstraints = false
+        box.backgroundColor = .blue
+        return box
+    }()
+    
+    let blueBox2: UIView = {
+        let rect = CGRect.zero
+        let box = UIView(frame: rect)
+        box.translatesAutoresizingMaskIntoConstraints = false
+        box.backgroundColor = .blue
+        return box
+    }()
+    
+    let blueBox3: UIView = {
+        let rect = CGRect.zero
+        let box = UIView(frame: rect)
+        box.translatesAutoresizingMaskIntoConstraints = false
+        box.backgroundColor = .blue
+        return box
+    }()
+
     let purpleBox: UIView = {
         let rect = CGRect.zero
         let view = UIView(frame: rect)
@@ -67,8 +92,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        
+        let blueContainer = UIStackView(arrangedSubviews: [
+            blueBox1, blueBox2, blueBox3
+        ])
+        blueContainer.translatesAutoresizingMaskIntoConstraints = false
+        blueContainer.alignment = .center
+        blueContainer.axis = .vertical
+        blueContainer.distribution = .equalSpacing
+        
+        
+        // Add subview
         mainView.addSubview(purpleBox)
         mainView.addSubview(redContainer)
+        mainView.addSubview(blueContainer)
         
         NSLayoutConstraint.activate([
             // puple
@@ -84,7 +122,16 @@ class ViewController: UIViewController {
             redContainer.heightAnchor.constraint(equalToConstant: 50),
             
             // blue
-            
+            blueContainer.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
+            blueContainer.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 25),
+            blueContainer.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -25),
+            blueContainer.widthAnchor.constraint(equalToConstant: blueBoxSize),
+            blueBox1.widthAnchor.constraint(equalToConstant: blueBoxSize),
+            blueBox1.heightAnchor.constraint(equalToConstant: blueBoxSize),
+            blueBox2.widthAnchor.constraint(equalToConstant: blueBoxSize),
+            blueBox2.heightAnchor.constraint(equalToConstant: blueBoxSize),
+            blueBox3.widthAnchor.constraint(equalToConstant: blueBoxSize),
+            blueBox3.heightAnchor.constraint(equalToConstant: blueBoxSize),
         ])
         
         view.addSubview(mainView)
