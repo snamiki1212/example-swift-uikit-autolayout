@@ -111,10 +111,8 @@ class ViewController: UIViewController {
         blueContainer.distribution = .equalSpacing
         
         // Red
-        
         let redContainer = UIStackView(arrangedSubviews: [pinkBox1, pinkBox2])
         redContainer.backgroundColor = .red
-        
         redContainer.translatesAutoresizingMaskIntoConstraints = false
         redContainer.alignment = .center
         redContainer.axis = .horizontal
@@ -128,7 +126,7 @@ class ViewController: UIViewController {
         mainView.addSubview(blueContainer)
         
         NSLayoutConstraint.activate([
-            // puple
+            // purple
             purpleBox.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -20),
             purpleBox.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -20),
             purpleBox.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.6),
