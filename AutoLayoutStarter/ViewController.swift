@@ -18,11 +18,19 @@ class ViewController: UIViewController {
         return main
     }()
     
-    let redContainer: UIView = {
+    let pinkBox1: UIView = {
         let rect = CGRect.zero
         let view = UIView(frame: rect)
-        view.translatesAutoresizingMaskIntoConstraints  = false
-        view.backgroundColor = .red
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .lightGray
+        return view
+    }()
+    
+    let pinkBox2: UIView = {
+        let rect = CGRect.zero
+        let view = UIView(frame: rect)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .lightGray
         return view
     }()
     
@@ -93,7 +101,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        
+        // Blue
         let blueContainer = UIStackView(arrangedSubviews: [
             blueBox1, blueBox2, blueBox3
         ])
@@ -102,6 +110,13 @@ class ViewController: UIViewController {
         blueContainer.axis = .vertical
         blueContainer.distribution = .equalSpacing
         
+        // Red
+        let redContainer = UIStackView(arrangedSubviews: [pinkBox1, pinkBox2])
+        redContainer.backgroundColor = .red
+        redContainer.translatesAutoresizingMaskIntoConstraints = false
+        redContainer.alignment = .center
+        redContainer.axis = .horizontal
+        redContainer.distribution = .equalSpacing
         
         // Add subview
         mainView.addSubview(purpleBox)
@@ -119,7 +134,15 @@ class ViewController: UIViewController {
             redContainer.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 20),
             redContainer.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -20),
             redContainer.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.3),
-            redContainer.heightAnchor.constraint(equalToConstant: 50),
+            redContainer.heightAnchor.constraint(equalToConstant: 60),
+            pinkBox1.widthAnchor.constraint(equalTo: redContainer.widthAnchor, multiplier: 0.3),
+            pinkBox1.heightAnchor.constraint(equalTo: redContainer.heightAnchor, multiplier: 0.6),
+            pinkBox2.widthAnchor.constraint(equalTo: redContainer.widthAnchor, multiplier: 0.3),
+            pinkBox2.heightAnchor.constraint(equalTo: redContainer.heightAnchor, multiplier: 0.6),
+            
+            pinkBox1.topAnchor.constraint(equalTo: redContainer.topAnchor, constant: 5),
+            pinkBox1.bottomAnchor.constraint(equalTo: redContainer.bottomAnchor, constant: 5),
+            pinkBox1.leadingAnchor.constraint(equalTo: redContainer.leadingAnchor, constant: 20),
             
             // blue
             blueContainer.centerXAnchor.constraint(equalTo: mainView.centerXAnchor),
